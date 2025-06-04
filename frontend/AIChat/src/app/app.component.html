@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark bg-dark d-flex flex-column justify-content-center align-items-center">
+  <div class="mb-2">
+    <span class="text-light me-2">AI Chat</span><i class="bi bi-chat-dots-fill text-light"></i>
+  </div>
+  <button class="btn btn-success" (click)="newChat()">Новий чат</button>
+</nav>
+
+<div class="container-fluid p-3">
+  <div class="chat-messages mb-3" style="height: 75vh; overflow-y: auto;">
+    <div *ngFor="let ms of chatMessages" class="mb-2 me-2">
+      <div *ngIf="ms.role == 'user'" class="d-flex justify-content-end">
+        <div class="bg-primary text-white p-2 rounded">{{ms.content}}</div>
+      </div>
+      <div *ngIf="ms.role == 'assistant'" class="d-flex justify-content-start">
+        <div class="bg-light p-2 rounded border">{{ms.content}}</div>
+      </div>
+    </div>
+  </div>
+  <form class="d-flex gap-2">
+    <input type="text" class="form-control" [(ngModel)]="this.currentMessage" name="currentMessage" (keyup.enter)="onSendMessage()" />
+    <button type="button" class="btn btn-primary" (click)="onSendMessage()">Надіслати</button>
+  </form>
+</div>
