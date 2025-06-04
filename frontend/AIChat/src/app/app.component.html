@@ -7,6 +7,9 @@
 
 <div class="container-fluid p-3">
   <div class="chat-messages mb-3" style="height: 75vh; overflow-y: auto;">
+    <div *ngIf="chatMessages.length == 0" class="mt-2 text-center">
+      <p class="badge bg-dark text-light">Розпочніть розмову, надіславши повідомлення.</p>
+    </div>
     <div *ngFor="let ms of chatMessages" class="mb-2 me-2">
       <div *ngIf="ms.role == 'user'" class="d-flex justify-content-end">
         <div class="bg-primary text-white p-2 rounded">{{ms.content}}</div>
